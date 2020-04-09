@@ -99,7 +99,7 @@ namespace Testing.Controllers
 
             ModelState.Clear();
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
