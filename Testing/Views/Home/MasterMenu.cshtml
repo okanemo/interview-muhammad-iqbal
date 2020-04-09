@@ -1,0 +1,35 @@
+﻿@model Testing.Models.MasterMenu
+@{
+    ViewData["Title"] = "MasterMenu";
+    IEnumerable<MasterMenu> masterMenu = ViewData["MasterMenu"] as IEnumerable<MasterMenu>;
+}
+
+@using (Html.BeginForm("MasterMenu", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="exampleInputName">Name</label>
+        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Enter Name" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+<div class="mx-auto" style="width: 200px;">
+    &nbsp;
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (MasterMenu data in masterMenu)
+        {
+            <tr>
+                <th scope="row">@data.Id</th>
+                <td>@data.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

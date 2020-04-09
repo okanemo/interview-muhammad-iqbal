@@ -1,0 +1,37 @@
+﻿@model Testing.Models.MasterRole
+@{
+    ViewData["Title"] = "Master Role";
+    IEnumerable<MasterRole> masterRole = ViewData["MasterRole"] as IEnumerable<MasterRole>;
+}
+
+@using (Html.BeginForm("MasterRole", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="exampleInputName">Name</label>
+        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Enter Name" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+<div class="mx-auto" style="width: 200px;">
+    &nbsp;
+</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (MasterRole data in masterRole)
+        {
+            <tr>
+                <th scope="row">@data.Id</th>
+                <td>@data.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
